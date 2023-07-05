@@ -8,6 +8,9 @@ dotenv.config();
 //Esta constante almacena la instancia de express para poder usar el framework
 const appExpress = express();
 //Creamos una variable con los datos necesarios para levantar el servidor trayendo un objeto tipo json del archivo .env
+
+appExpress.use(express.urlencoded({ extended: true }));
+
 const config = JSON.parse(process.env.MY_CONFIG);
 //Se levanta el servidor y se muestra en la consola la url del mismo
 appExpress.listen(config, ()=>{console.log(`http://${config.hostname}:${config.port}`)});

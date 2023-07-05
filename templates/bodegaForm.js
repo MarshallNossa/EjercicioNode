@@ -18,15 +18,6 @@ const bodegaFormulario = () => {
         <label for="updated_by">Actualizado por (id):</label> <br>
         <input type="text" id="updated_by" name="updated_by" required><br><br>
 
-        <label for="created_at">Creado en (fecha):</label> <br>
-        <input type="date" id="created_at" name="created_at" required><br><br>
-
-        <label for="updated_at">Actualizado en (fecha):</label> <br>
-        <input type="date" id="updated_at" name="updated_at" required><br><br>
-
-        <label for="deleted_at">Borrado en (fecha):</label> <br>
-        <input type="date" id="deleted_at" name="deleted_at" required><br><br>
-
         <input type="submit" value="Guardar">
         </form>
     `;

@@ -29,7 +29,7 @@ storage.post("/guardarBodega", (req, res) => {
     const {nombre, id_responsable, estado, created_by, updated_by, created_at, updated_at, deleted_at} = req.body;
     
     con.query(
-        /* sql */ `INSERT INTO bodegas ( "id", "nombre", "id_responsable", "estado", "created_by", "updated_by", "created_at", "updated_at", "deleted_at") VALUES (?,?,?,?,?,?,?,?)`,
+        /* sql */ `INSERT INTO bodegas ("nombre", "id_responsable", "estado", "created_by", "updated_by") VALUES (?,?,?,?,?)`,
         [nombre, id_responsable, estado, created_by, updated_by, created_at, updated_at, deleted_at],
         (err, data, fill) => {
             res.send(JSON.stringify(data))
