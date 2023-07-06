@@ -49,6 +49,21 @@ storage.post("/guardarBodega", (req, res) => {
     )
 });
 
-
+storage.get("/listarProductos", (req, res) => {
+    con.query( 
+        /* sql */ `
+        /* Tomo todos los datos de la tabla productos y calculo la suma de los valores de cantidad en la tabla inventarios, luego uno la tabla inventario con productos para poder relacionar los productos con su cantidad, luego hago lo mismo con la bodega para obtener cuantos productos hay en cada bodega segun su id, luego los agrupo para poder sumarlos y finalmente los ordeno de mayor a menor para poder mostrarlos en pantalla
+        */
+        SELECT p.*, SUM(i.cantidad) AS totalProductos
+        FROM productos p
+        JOIN inventarios i ON p.id = i.id_producto
+        JOIN bodegas b ON i.id_bodega = b.id
+        GROUP BY p.id
+        ORDER BY totalProductos DESC;`,
+        (err, data, fill) => {
+            err ? res.send(err) : res.send(data)
+        }
+    )
+})
 
 export default storage;
